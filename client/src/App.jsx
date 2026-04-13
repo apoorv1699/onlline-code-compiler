@@ -62,7 +62,10 @@ function App() {
   return (
     <div className="app-container">
       <header className="app-header">
-        <h1>CodeSphere</h1>
+        <div className="branding">
+          <img src="/logo.jpg" alt="Logo" className="logo" />
+          <h1>CodeSphere</h1>
+        </div>
         <div className="controls">
           <select value={language} onChange={handleLanguageChange}>
             <option value="javascript">JavaScript (Node.js)</option>

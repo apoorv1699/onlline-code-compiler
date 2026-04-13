@@ -122,6 +122,20 @@ body::after {
   animation: slideDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) backwards;
 }
 
+.branding {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  height: 42px;
+  width: 42px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
 .app-header h1 {
   font-family: 'Outfit', sans-serif;
   font-size: 1.6rem;
