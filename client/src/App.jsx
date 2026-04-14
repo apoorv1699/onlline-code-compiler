@@ -22,6 +22,9 @@ function App() {
     const savedLang = localStorage.getItem('language') || 'javascript';
     return savedCode !== null ? savedCode : BOILERPLATES[savedLang];
   });
+  const [input, setInput] = useState(() => {
+    return localStorage.getItem('input') || '';
+  });
   const [output, setOutput] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -44,13 +47,18 @@ function App() {
     localStorage.setItem('code', code);
   }, [code]);
 
+  useEffect(() => {
+    localStorage.setItem('input', input);
+  }, [input]);
+
   const handleRun = async () => {
     setLoading(true);
     setOutput('Running...');
     try {
       const response = await axios.post('http://localhost:5000/api/execute', {
         language,
-        code
+        code,
+        input
       });
       setOutput(response.data.output || 'No output');
     } catch (error) {
@@ -73,8 +81,8 @@ function App() {
             <option value="java">Java</option>
             <option value="cpp">C++</option>
           </select>
-          <button 
-            className="theme-toggle" 
+          <button
+            className="theme-toggle"
             onClick={() => setIsDarkMode(!isDarkMode)}
             title={isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
           >
@@ -96,9 +104,21 @@ function App() {
             options={{ fontSize: 14, minimap: { enabled: false } }}
           />
         </div>
-        <div className="output-container">
-          <h2>Output Terminal</h2>
-          <pre className="output-console">{output}</pre>
+        <div className="side-panel">
+          <div className="input-container">
+            <h2>Custom Input</h2>
+            <textarea
+              className="input-textarea"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              spellCheck="false"
+              placeholder="Enter input here..."
+            ></textarea>
+          </div>
+          <div className="output-container">
+            <h2>Output Terminal</h2>
+            <pre className="output-console">{output}</pre>
+          </div>
         </div>
       </div>
     </div>

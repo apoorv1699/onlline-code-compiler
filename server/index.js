@@ -16,13 +16,13 @@ mongoose.connect(MONGO_URI)
 
 // Code execution route
 app.post('/api/execute', async (req, res) => {
-  const { language, code } = req.body;
+  const { language, code, input } = req.body;
   if (!language || !code) {
     return res.status(400).json({ error: 'Language and code are required' });
   }
 
   try {
-    const output = await executeCode(language, code);
+    const output = await executeCode(language, code, input);
     res.json({ output });
   } catch (error) {
     res.status(500).json({ error: error.message || 'Error executing code' });

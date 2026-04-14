@@ -32,7 +32,7 @@ const runCommands = {
   java: (filePath) => `javac ${filePath} && java Main`
 };
 
-const executeCode = (language, code) => {
+const executeCode = (language, code, input = '') => {
   return new Promise((resolve, reject) => {
     if (!images[language]) {
       return reject(new Error(`Language ${language} is not supported.`));
@@ -42,15 +42,18 @@ const executeCode = (language, code) => {
     const ext = extensions[language];
     const execDir = path.join(TEMP_DIR, fileId);
     fs.mkdirSync(execDir, { recursive: true });
-    
+
     const filename = language === 'java' ? 'Main.java' : `index.${ext}`;
     const filePath = path.join(execDir, filename);
 
     // Write code to a temp file
     fs.writeFileSync(filePath, code);
 
+    // Write input to a temp file
+    fs.writeFileSync(path.join(execDir, 'input.txt'), input || '');
+
     // Docker command to mount the temp dir and run the code
-    const dockerCmd = `docker run --rm -v "${execDir}:/usr/src/app" -w /usr/src/app ${images[language]} sh -c "${runCommands[language](filename)}"`;
+    const dockerCmd = `docker run --rm -v "${execDir}:/usr/src/app" -w /usr/src/app ${images[language]} sh -c "${runCommands[language](filename)} < input.txt"`;
 
     exec(dockerCmd, { timeout: 10000 }, (error, stdout, stderr) => {
       // Cleanup files safely
@@ -69,7 +72,7 @@ const executeCode = (language, code) => {
       if (stderr) {
         return reject(new Error(stderr));
       }
-      
+
       resolve(stdout);
     });
   });
