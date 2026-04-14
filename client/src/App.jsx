@@ -67,6 +67,11 @@ function App() {
     setLoading(false);
   };
 
+  const handleReset = () => {
+    setCode(BOILERPLATES[language]);
+    setOutput('');
+  };
+
   return (
     <div className="app-container">
       <header className="app-header">
@@ -87,6 +92,9 @@ function App() {
             title={isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
           >
             {isDarkMode ? '☀️' : '🌙'}
+          </button>
+          <button onClick={handleReset} className="reset-button" title="Reset code to boilerplate">
+            Reset
           </button>
           <button onClick={handleRun} disabled={loading} className={`run-button ${loading ? 'loading' : ''}`}>
             {loading ? <span className="spinner"></span> : 'Run Code'}

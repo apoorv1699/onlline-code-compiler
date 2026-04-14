@@ -326,6 +326,41 @@ option {
   background: rgba(0, 0, 0, 0.05);
 }
 
+.reset-button {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+  border: 1.5px solid #ef4444;
+  padding: 0.6rem 1.4rem;
+  border-radius: 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reset-button:hover {
+  background: #ef4444;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+}
+
+.reset-button:active {
+  transform: translateY(1px);
+}
+
+:root[data-theme="light"] .reset-button {
+  color: #dc2626;
+  border-color: #dc2626;
+  background: rgba(220, 38, 38, 0.1);
+}
+
+:root[data-theme="light"] .reset-button:hover {
+  background: #dc2626;
+  color: white;
+}
+
 /* Glassmorphism Panels */
 .main-content {
   display: flex;
