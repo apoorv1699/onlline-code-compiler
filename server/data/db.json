@@ -1,0 +1,48 @@
+{
+  "users": [
+    {
+      "username": "user1",
+      "email": "user1@code.com",
+      "password": "$2b$10$ast4/qrT2s5O8Zov6BcLoO5AW4vuCbmz0ScPYkR4IzmGD6p7dIFWW",
+      "_id": "60b7d0c41feb1d99f0211e9c",
+      "createdAt": "2026-04-20T20:35:25.581Z"
+    },
+    {
+      "username": "user2",
+      "email": "user2@code.com",
+      "password": "$2b$10$ISpmuivqjmTzbGPpHT4TrOstT9Jotqg4XA85bM5hQ2.yCoewrOmHm",
+      "_id": "f38ae28f46130fe4ea8a59a8",
+      "createdAt": "2026-04-20T20:36:07.307Z"
+    },
+    {
+      "username": "testuser_1776717463669",
+      "email": "testuser_1776717463669@test.com",
+      "password": "$2b$10$hOk4N54fPdGt.jlmDA1dsOOKV9vOPJUz6dIz57sRkc50XDGoazuEq",
+      "_id": "c6e84310eac7feed707d7a23",
+      "createdAt": "2026-04-20T20:37:43.926Z"
+    },
+    {
+      "username": "tester",
+      "email": "tester@example.com",
+      "password": "$2b$10$N1ckC/hK/YjwyG0Ox3ihLeyE0djVsQfghzZaMTsmMXRY0bfUd.m8K",
+      "_id": "2ddf3ed98b5cf8b6e23d1387",
+      "createdAt": "2026-04-20T20:38:49.348Z"
+    }
+  ],
+  "projects": [
+    {
+      "owner": "c6e84310eac7feed707d7a23",
+      "name": "Test Project",
+      "language": "javascript",
+      "files": [
+        {
+          "name": "index.js",
+          "content": "console.log(\"hello\")"
+        }
+      ],
+      "_id": "aa50dfd3184fd1d51f018737",
+      "createdAt": "2026-04-20T20:37:43.955Z",
+      "updatedAt": "2026-04-20T20:37:43.955Z"
+    }
+  ]
+}
