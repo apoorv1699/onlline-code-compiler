@@ -374,7 +374,7 @@ function App() {
 
       <header className="app-header">
         <div className="branding">
-          <img src="/logo.jpg" alt="Logo" className="logo" />
+          <img src="/logo.png" alt="Logo" className="logo" />
           <div>
             <h1>CodeSphere</h1>
             <p className="room-info">Room: <strong>{roomId}</strong></p>
