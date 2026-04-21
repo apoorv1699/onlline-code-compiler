@@ -2,7 +2,13 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 
 // Standard URI that bypasses SRV lookups
-const uri = 'mongodb://admin:Apoorv8806@ac-wkmdyde-shard-00-00.ugwal4w.mongodb.net:27017,ac-wkmdyde-shard-00-01.ugwal4w.mongodb.net:27017,ac-wkmdyde-shard-00-02.ugwal4w.mongodb.net:27017/compiler?ssl=true&replicaSet=atlas-wkmdyde-shard-0&authSource=admin&retryWrites=true&w=majority';
+const uri = process.env.MONGO_URI;
+
+if (!uri) {
+  console.error('Error: MONGO_URI is not set in the .env file');
+  process.exit(1);
+}
+
 console.log('Attempting standard URI connection...');
 
 mongoose.connect(uri)
