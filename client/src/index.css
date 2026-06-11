@@ -668,30 +668,6 @@ option {
   border: 1px solid var(--border-color);
 }
 
-.profile-modal {
-  max-width: 420px;
-}
-
-.profile-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.profile-row:last-child {
-  border-bottom: none;
-}
-
-.profile-row span {
-  color: var(--text-secondary);
-}
-
-.profile-row strong {
-  color: var(--text-primary);
-  word-break: break-all;
-}
 
 /* File Tree Styles */
 .file-tree {

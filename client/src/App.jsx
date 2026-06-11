@@ -44,7 +44,6 @@ function App() {
   const [user, setUser] = useState(() => JSON.parse(localStorage.getItem('user') || 'null'));
   const [token, setToken] = useState(() => localStorage.getItem('token') || '');
   const [showAuth, setShowAuth] = useState(false);
-  const [showProfile, setShowProfile] = useState(false);
   const [authMode, setAuthMode] = useState('login');
   const [authForm, setAuthForm] = useState({ username: '', email: '', password: '' });
   
@@ -373,26 +372,6 @@ function App() {
         </div>
       )}
 
-      {showProfile && user && (
-        <div className="modal-overlay">
-          <div className="modal-content profile-modal">
-            <h2>Profile</h2>
-            <div className="profile-row">
-              <span>Name</span>
-              <strong>{user.username}</strong>
-            </div>
-            <div className="profile-row">
-              <span>Email</span>
-              <strong>{user.email}</strong>
-            </div>
-            <div className="profile-row">
-              <span>User ID</span>
-              <strong>{user.id || user._id}</strong>
-            </div>
-            <button className="close-btn" onClick={() => setShowProfile(false)}>Close</button>
-          </div>
-        </div>
-      )}
 
       <header className="app-header">
         <div className="branding">
@@ -422,10 +401,7 @@ function App() {
           {!user ? (
             <button onClick={() => setShowAuth(true)} className="reset-button" style={{color: 'white', background: 'var(--primary)'}}>Login</button>
           ) : (
-            <>
-              <button onClick={() => setShowProfile(true)} className="reset-button">Profile</button>
-              <button onClick={() => { setUser(null); setShowProfile(false); }} className="reset-button">Logout ({user.username})</button>
-            </>
+            <button onClick={() => setUser(null)} className="reset-button">Logout ({user.username})</button>
           )}
 
           <button onClick={handleRun} disabled={loading} className={`run-button ${loading ? 'loading' : ''}`}>
